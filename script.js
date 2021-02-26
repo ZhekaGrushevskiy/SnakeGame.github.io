@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     eatTailAudio.src = "eatTailAudio.mp3";
 
     var slowHeart = new Audio();
-    slowHeart.src = 'slowheart.WAV';
+    slowHeart.src = 'slowheart.wav';
 
     function foodSrc() {
         var links = ['', 'pizza.png', 'burger.png', 'hot-dog.png', 'frees.png', 'bigPizza.png'];
