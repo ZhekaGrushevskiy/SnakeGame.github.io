@@ -133,7 +133,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 }
                 else if (touchYs > touchYm) {
                     if(touchYs-touchYm>touchXs-touchXm  && move != 'down'){
-                     
                         move = 'up';
                         snakeHead.src = 'snakeHead.svg';
                     }
@@ -146,7 +145,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 }
                 else if (touchYs < touchYm ) {
                     if(touchYm-touchYs>touchXm-touchXs && move != 'up'){
-                        
                         move = 'down';
                         snakeHead.src = 'snakeHeadDown.svg';
                     }  
