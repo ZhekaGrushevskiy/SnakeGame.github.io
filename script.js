@@ -4,8 +4,15 @@ document.addEventListener("DOMContentLoaded", function (event) {
     var fieldOne = 25;
     var score = 0;
     var count = 0;
-
-
+setInterval(function(){
+    var screenWidth=window.screen.width;
+    var screenHeight=window.screen.height;
+    var boxContent=document.getElementById('box-content')
+    if(screenWidth>screenHeight){
+        boxContent.style.width=screenHeight+'px';
+    }
+},100);
+    
 
     var canvas = document.getElementById('canvas1');
     canvas.setAttribute('width', fieldWidth);
@@ -37,8 +44,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
     redHeartImg.src = 'redheart.png';
 
     var redheart = {
-        // posX: Math.floor((Math.random() * ((fieldWidth-fieldOne) / fieldOne) )) * fieldOne,
-        // posY: Math.floor((Math.random() * ((fieldHeight-fieldOne*3) / fieldOne) +3)) * fieldOne
         posX: fieldOne * 10,//out of field
         posY: fieldOne
     };
@@ -55,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     eatTailAudio.src = "eatTailAudio.mp3";
 
     var slowHeart = new Audio();
-    slowHeart.src = 'slowheart.wav';
+    slowHeart.src = 'slowheart.WAV';
 
     function foodSrc() {
         var links = ['', 'pizza.png', 'burger.png', 'hot-dog.png', 'frees.png', 'bigPizza.png'];
@@ -76,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         posY: fieldHeight / 2,
     };
 
-
+    
 
     document.addEventListener('keydown', snakeMove, false);
 
@@ -102,6 +107,32 @@ document.addEventListener("DOMContentLoaded", function (event) {
         }
 
     }
+
+    // var upButton=document.getElementById('upButton');
+    // upButton.addEventListener('mousedown',function(EO){
+    //     EO=EO||window.event;
+    //     if(move!='down')
+    //     move='up';
+    // },false);
+    // var downButton=document.getElementById('downButton');
+    // downButton.addEventListener('mousedown',function(EO){
+    //     EO=EO||window.event;
+    //     if(move!='up')
+    //     move='down';
+    // },false);
+    // var leftButton=document.getElementById('leftButton');
+    // leftButton.addEventListener('mousedown',function(EO){
+    //     EO=EO||window.event;
+    //     if(move!='right')
+    //     move='left';
+    // },false);
+    // var rightButton=document.getElementById('rightButton');
+    // rightButton.addEventListener('mousedown',function(EO){
+    //     EO=EO||window.event;
+    //     if(move!='left')
+    //     move='right';
+    // },false);
+
     // touch--------------------------------
 
     document.addEventListener('touchstart', funTouchStart, false);
@@ -192,10 +223,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
         context.fillRect(0, 0, fieldWidth, fieldOne * 3);
 
         context.beginPath();
-        context.moveTo(0, fieldOne * 3);
-        context.lineTo(fieldWidth, fieldOne * 3);
-        context.lineTo(fieldWidth, fieldHeight);
-        context.lineTo(0, fieldHeight);
+        context.moveTo(2, fieldOne * 3);
+        context.lineTo(fieldWidth-2, fieldOne * 3);
+        context.lineTo(fieldWidth-2, fieldHeight-2);
+        context.lineTo(2, fieldHeight-2);
         context.closePath();
         context.lineWidth = 2;
         context.stroke();
@@ -304,15 +335,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
             context.drawImage(heart, fieldWidth - fieldOne * 7, fieldOne);
             context.drawImage(heart, fieldWidth - fieldOne * 5, fieldOne);
             context.drawImage(heart, fieldWidth - fieldOne * 3, fieldOne);
-            // context.strokeStyle='red';
-            // context.beginPath();
-            // context.moveTo(0,fieldOne*3);
-            // context.lineTo(fieldWidth,fieldOne*3);
-            // context.lineTo(fieldWidth,fieldHeight);
-            // context.lineTo(0,fieldHeight);
-            // context.closePath();
-            // context.lineWidth=4;
-            // context.stroke();
+           
         } else if (count == 1) {
             context.drawImage(heart, fieldWidth - fieldOne * 7, fieldOne);
             context.drawImage(heart, fieldWidth - fieldOne * 5, fieldOne);
@@ -322,7 +345,15 @@ document.addEventListener("DOMContentLoaded", function (event) {
             context.drawImage(heart, fieldWidth - fieldOne * 7, fieldOne);
             context.drawImage(emptyheart, fieldWidth - fieldOne * 5, fieldOne);
             context.drawImage(emptyheart, fieldWidth - fieldOne * 3, fieldOne);
-
+            context.strokeStyle='red';
+            context.beginPath();
+            context.moveTo(2, fieldOne * 3);
+            context.lineTo(fieldWidth-2, fieldOne * 3);
+            context.lineTo(fieldWidth-2, fieldHeight-2);
+            context.lineTo(2, fieldHeight-2);
+            context.closePath();
+            context.lineWidth = 2;
+            context.stroke();
         } else if (count == 3) {
             context.drawImage(emptyheart, fieldWidth - fieldOne * 7, fieldOne);
             context.drawImage(emptyheart, fieldWidth - fieldOne * 5, fieldOne);
