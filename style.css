@@ -1,8 +1,40 @@
-#boxField{
-    margin:50px auto;
-    /* color: rgb(37, 109, 37); */
+
+html,body{
+    background-image:
+radial-gradient(circle at 100% 150%, rgb(121, 182, 121) 40%, transparent 40%, transparent),
+radial-gradient(circle at 0 150%, rgb(121, 182, 121) 40%, transparent 40%, transparent),
+radial-gradient(circle at 50% 100%, rgb(88, 117, 88) 71%, transparent 71%,   transparent),
+radial-gradient(circle at 100% 50%, rgb(121, 182, 121) 49%, transparent 50%,  transparent),
+radial-gradient(circle at 0 50%, rgb(121, 182, 121) 49%, transparent 50%, transparent);
+background-repeat: repeat;
+background-size: 50px 25px;
+margin: 0;
+padding: 0;
 }
-#Layer_1{
-    width: 25px;
-    height: 25px;
+#box{
+display: flex;
+height: 100vh;
+justify-content: center;
 }
+#box-content{
+width: 600px;
+}
+
+#buttons{
+    width: 180px;
+    height: 180px;
+}
+#buttons table{
+    width: 180px;
+    height: 180px;
+}
+.img-but{
+    width: 60px;
+    height: 60px;
+}
+.img-but:hover{
+    opacity: 0.8;
+}
+
+
+
