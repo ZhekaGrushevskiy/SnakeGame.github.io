@@ -5,11 +5,13 @@ document.addEventListener("DOMContentLoaded", function (event) {
     var score = 0;
     var count = 0;
 setInterval(function(){
-    var screenWidth=window.screen.width;
-    var screenHeight=window.screen.height;
+    var screenWidth=window.screen.availWidth;
+    var screenHeight=window.screen.availHeight;
     var boxContent=document.getElementById('box-content')
     if(screenWidth>screenHeight){
-        boxContent.style.width=screenHeight+'px';
+        boxContent.style.width=screenHeight-5+'px';
+    }else{
+        boxContent.style.width=screenHeight-5+'px';
     }
 },100);
     
