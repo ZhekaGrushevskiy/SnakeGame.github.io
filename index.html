@@ -1,4 +1,6 @@
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -6,94 +8,14 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div class="box">
-        <div class="box-content">
-          <canvas id="canvas1" width="300" height="300" style="width: 100%;"></canvas>
-        </div>
-      </div>
-    <script src="script.js"></script>
-    <style>
-        html,body{
-            background-image:
-    radial-gradient(circle at 100% 150%, rgb(121, 182, 121) 40%, transparent 40%, transparent),
-    radial-gradient(circle at 0 150%, rgb(121, 182, 121) 40%, transparent 40%, transparent),
-    radial-gradient(circle at 50% 100%, rgb(88, 117, 88) 71%, transparent 71%,   transparent),
-    radial-gradient(circle at 100% 50%, rgb(121, 182, 121) 49%, transparent 50%,  transparent),
-    radial-gradient(circle at 0 50%, rgb(121, 182, 121) 49%, transparent 50%, transparent);
-    background-repeat: repeat;
-    background-size: 50px 25px;
-    display: block;
-    margin: 0;
-    padding: 0;
-}
-.box{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height:100vh;
-}
-.box-content{
-    width: 780px;
-    height: 780px;
-    margin: 0 10px 0;
-    
-}
 
-@media(min-height:200px){
-    .box-content{
-        width: 200px;
-        height: 200px;
-    } 
-} 
-@media(min-height:250px){
-    .box-content{
-        width: 250px;
-        height: 250px;
-    } 
-} 
-@media(min-height:300px){
-    .box-content{
-        width: 300px;
-        height: 300px;
-    } 
-} 
-@media(min-height:350px){
-    .box-content{
-        width: 350px;
-        height: 350px;
-    } 
-} 
-@media(min-height:400px){
-    .box-content{
-        width: 400px;
-        height: 400px;
-    } 
-} 
-@media(min-height:450px){
-    .box-content{
-        width: 450px;
-        height: 450px;
-    } 
-} 
-@media(min-height:500px){
-    .box-content{
-        width: 500px;
-        height: 500px;
-    } 
-} 
-@media(min-height:550px){
-    .box-content{
-        width: 550px;
-        height: 550px;
-    } 
-} 
-@media(min-height:600px){
-    .box-content{
-        width: 600px;
-        height: 600px;
-    } 
-} 
-    </style>
+<body>
+    <div id="box">
+        <div id="box-content">
+            <canvas id="canvas1" width="300" height="300" style="width: 100%;"></canvas>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
+
 </html>
