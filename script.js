@@ -4,17 +4,17 @@ document.addEventListener("DOMContentLoaded", function (event) {
     var fieldOne = 25;
     var score = 0;
     var count = 0;
-    
+
     window.addEventListener('resize',orientFun,false);
     function orientFun(EO){
         EO=EO||window.event;
-        EO.preventDefault();
         var boxContent=document.getElementById('box-content');
-        var screenHeight=window.screen.availHeight;
+        var canvas = document.getElementById('canvas1');
+        var screenHeight=window.innerHeight;
         boxContent.style.width=screenHeight-20+'px';
-        boxContent.style.height=screenHeight-20+'px';
-        boxContent.style.marginBottom=10+'px';
-        console.log('afsa');
+        boxContent.style.height=canvas.offsetWidth-20+'px';
+        boxContent.style.margin=10+'px'; 
+        
     }
 
 
@@ -207,6 +207,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     draw();
     function draw() {
 
+        orientFun();
 
         for (let i = 0; i < fieldWidth; i = i + fieldOne) {
             for (let k = 0; k < fieldHeight; k = k + fieldOne) {
