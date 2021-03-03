@@ -14,7 +14,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
         boxContent.style.width=screenHeight-20+'px';
         boxContent.style.height=canvas.offsetWidth-20+'px';
         boxContent.style.margin=10+'px'; 
-        
     }
 
 
