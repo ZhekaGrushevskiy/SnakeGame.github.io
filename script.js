@@ -7,13 +7,16 @@ document.addEventListener("DOMContentLoaded", function (event) {
 setInterval(function(){
     var screenWidth=window.screen.availWidth;
     var screenHeight=window.screen.availHeight;
-    var boxContent=document.getElementById('box-content')
+    var boxContent=document.getElementById('box-content');
     if(screenWidth>screenHeight){
-        boxContent.style.width=screenHeight-5+'px';
+        boxContent.style.width=screenHeight-50+'px';
+        boxContent.style.height=screenHeight-50+'px';
     }else{
-        boxContent.style.width=screenHeight-5+'px';
+        screenHeight=window.screen.availHeight;
+        boxContent.style.width=screenHeight-50+'px';
+        boxContent.style.height=screenHeight-50+'px';
     }
-},100);
+},0);
     
 
     var canvas = document.getElementById('canvas1');
@@ -137,24 +140,28 @@ setInterval(function(){
 
     // touch--------------------------------
 
-    document.addEventListener('touchstart', funTouchStart, false);
+    var box=document.getElementById('box');
+    box.addEventListener('touchstart', funTouchStart, false);
 
     function funTouchStart(EO) {
         EO = EO || window.event;
+        EO.preventDefault();
         var touchInfoStart = EO.targetTouches[0];
         var touchXs = touchInfoStart.pageX;
         var touchYs = touchInfoStart.pageY;
 
-        document.addEventListener('touchmove', funTouchMove, false);
+        box.addEventListener('touchmove', funTouchMove, false);
 
         function funTouchMove(EO) {
             EO = EO || window.event;
-            document.addEventListener('touchend', funTouchEnd, false);
+            EO.preventDefault();
+            box.addEventListener('touchend', funTouchEnd, false);
             var touchInfoMove = EO.targetTouches[0];
             var touchX1 = touchInfoMove.pageX;
             var touchY1 = touchInfoMove.pageY;
             function funTouchEnd(EO) {
                 EO = EO || window.event;
+                EO.preventDefault();
                var touchXm=touchX1;
                var touchYm=touchY1;
 
@@ -182,8 +189,8 @@ setInterval(function(){
                         snakeHead.src = 'snakeHeadDown.svg';
                     }  
                 }
-                document.removeEventListener('touchmove', funTouchMove, false);
-                document.removeEventListener('touchend', funTouchEnd, false);
+                box.removeEventListener('touchmove', funTouchMove, false);
+                box.removeEventListener('touchend', funTouchEnd, false);
 
             }
 
