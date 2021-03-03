@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         var canvas = document.getElementById('canvas1');
         var screenHeight=window.innerHeight;
         boxContent.style.width=screenHeight-20+'px';
-        boxContent.style.height=canvas.offsetWidth-20+'px';
+        boxContent.style.height=canvas.offsetWidth+'px';
         boxContent.style.margin=10+'px'; 
     }
 
@@ -111,32 +111,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     }
 
-    // var upButton=document.getElementById('upButton');
-    // upButton.addEventListener('mousedown',function(EO){
-    //     EO=EO||window.event;
-    //     if(move!='down')
-    //     move='up';
-    // },false);
-    // var downButton=document.getElementById('downButton');
-    // downButton.addEventListener('mousedown',function(EO){
-    //     EO=EO||window.event;
-    //     if(move!='up')
-    //     move='down';
-    // },false);
-    // var leftButton=document.getElementById('leftButton');
-    // leftButton.addEventListener('mousedown',function(EO){
-    //     EO=EO||window.event;
-    //     if(move!='right')
-    //     move='left';
-    // },false);
-    // var rightButton=document.getElementById('rightButton');
-    // rightButton.addEventListener('mousedown',function(EO){
-    //     EO=EO||window.event;
-    //     if(move!='left')
-    //     move='right';
-    // },false);
-
-    // touch--------------------------------
+    // swipe--------------------------------
 
     var box=document.getElementById('box');
     box.addEventListener('touchstart', funTouchStart, false);
@@ -163,26 +138,32 @@ document.addEventListener("DOMContentLoaded", function (event) {
                var touchXm=touchX1;
                var touchYm=touchY1;
 
-                if (touchXs > touchXm) {
-                    if(touchXs-touchXm>touchYs-touchYm  && move != 'right'){
+                var minSwipe=50;
+
+                if (touchXs > touchXm && touchXs-touchXm>=minSwipe) {
+                    if(Math.abs(touchXs-touchXm) > Math.abs(touchYs-touchYm)  && 
+                    move != 'right'){
                         move = 'left';
                         snakeHead.src = 'snakeHeadLeft.svg';
                     }
                 }
-                else if (touchYs > touchYm) {
-                    if(touchYs-touchYm>touchXs-touchXm  && move != 'down'){
+                else if (touchYs > touchYm && touchYs-touchYm>=minSwipe) {
+                    if(Math.abs(touchYs-touchYm)>Math.abs(touchXs-touchXm)  && 
+                    move != 'down'){
                         move = 'up';
                         snakeHead.src = 'snakeHead.svg';
                     }
                 }
-                else if (touchXs < touchXm) {
-                    if(touchXm-touchXs>touchYm-touchYs  && move != 'left'){
+                else if (touchXs < touchXm && touchXm-touchXs>=minSwipe) {
+                    if(Math.abs(touchXs-touchXm)>Math.abs(touchYs-touchYm)  && 
+                        move != 'left'){
                         move = 'right';
                         snakeHead.src = 'snakeHeadRight.svg';
                     }
                 }
-                else if (touchYs < touchYm ) {
-                    if(touchYm-touchYs>touchXm-touchXs && move != 'up'){
+                else if (touchYs < touchYm && touchYm-touchYs>=minSwipe) {
+                    if(Math.abs(touchYm-touchYs)>Math.abs(touchXm-touchXs) && 
+                        move != 'up'){
                         move = 'down';
                         snakeHead.src = 'snakeHeadDown.svg';
                     }  
@@ -205,6 +186,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     locCount = 0;
     draw();
     function draw() {
+
 
         orientFun();
 
@@ -304,19 +286,15 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
         if (move == 'left') {
             snakeX -= fieldOne;
-            // snakeX-=speedX;
         }
         if (move == 'right') {
             snakeX += fieldOne;
-            // snakeX+=speedX;
         }
         if (move == 'up') {
             snakeY -= fieldOne;
-            // snakeY-=speedY;
         }
         if (move == 'down') {
             snakeY += fieldOne;
-            // snakeY+=speedY;
         }
 
         if (snakeX < 0) {
