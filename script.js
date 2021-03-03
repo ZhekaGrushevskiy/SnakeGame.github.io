@@ -78,6 +78,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     };
 
+
     var snake = [];
     snake[0] = {
         posX: fieldWidth / 2,
@@ -178,15 +179,14 @@ document.addEventListener("DOMContentLoaded", function (event) {
     }
 
 
+    
 
-
-    var stopGame = setInterval(draw, 150);
+    var stopGame = setInterval(draw, 120);
 
     var milsec = 50;
     locCount = 0;
     draw();
     function draw() {
-
 
         orientFun();
 
@@ -255,7 +255,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
             }
         }
         context.drawImage(redHeartImg, redheart.posX, redheart.posY);
-
+        
 
 
 
@@ -274,6 +274,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 context.drawImage(snakeTail, snake[i].posX + 1.5, snake[i].posY + 1.5);
             }
 
+          
         }
 
         var snakeX = snake[0].posX;
@@ -325,11 +326,21 @@ document.addEventListener("DOMContentLoaded", function (event) {
             context.drawImage(heart, fieldWidth - fieldOne * 7, fieldOne);
             context.drawImage(heart, fieldWidth - fieldOne * 5, fieldOne);
             context.drawImage(emptyheart, fieldWidth - fieldOne * 3, fieldOne);
-
+            
         } else if (count == 2) {
             context.drawImage(heart, fieldWidth - fieldOne * 7, fieldOne);
             context.drawImage(emptyheart, fieldWidth - fieldOne * 5, fieldOne);
             context.drawImage(emptyheart, fieldWidth - fieldOne * 3, fieldOne);
+        }else if (count == 3) {
+            context.drawImage(emptyheart, fieldWidth - fieldOne * 7, fieldOne);
+            context.drawImage(emptyheart, fieldWidth - fieldOne * 5, fieldOne);
+            context.drawImage(emptyheart, fieldWidth - fieldOne * 3, fieldOne);
+        }else if(count>3){
+            context.drawImage(emptyheart, fieldWidth - fieldOne * 7, fieldOne);
+            context.drawImage(emptyheart, fieldWidth - fieldOne * 5, fieldOne);
+            context.drawImage(emptyheart, fieldWidth - fieldOne * 3, fieldOne);
+        }
+        if(count==2 || count>=3){
             context.strokeStyle='red';
             context.beginPath();
             context.moveTo(2, fieldOne * 3);
@@ -339,20 +350,24 @@ document.addEventListener("DOMContentLoaded", function (event) {
             context.closePath();
             context.lineWidth = 2;
             context.stroke();
-        } else if (count == 3) {
-            context.drawImage(emptyheart, fieldWidth - fieldOne * 7, fieldOne);
-            context.drawImage(emptyheart, fieldWidth - fieldOne * 5, fieldOne);
-            context.drawImage(emptyheart, fieldWidth - fieldOne * 3, fieldOne);
-        }else if(count>3){
-            context.drawImage(emptyheart, fieldWidth - fieldOne * 7, fieldOne);
-            context.drawImage(emptyheart, fieldWidth - fieldOne * 5, fieldOne);
-            context.drawImage(emptyheart, fieldWidth - fieldOne * 3, fieldOne);
         }
-        snake.unshift(newHead);
+        if(count<2){
+            context.strokeStyle='black';
+            context.beginPath();
+            context.moveTo(2, fieldOne * 3);
+            context.lineTo(fieldWidth-2, fieldOne * 3);
+            context.lineTo(fieldWidth-2, fieldHeight-2);
+            context.lineTo(2, fieldHeight-2);
+            context.closePath();
+            context.lineWidth = 2;
+            context.stroke();
+        }
 
+        snake.unshift(newHead);
+        
         if (snakeX == food.posX && snakeY == food.posY) {
-            score++;
             eatAudio.play();
+            score++;
             foodImg.src = foodSrc();
             food = {
                 posX: Math.floor((Math.random() * ((fieldWidth - fieldOne) / fieldOne))) * fieldOne,
