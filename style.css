@@ -13,6 +13,7 @@ padding: 0;
 #box{
 display: flex;
 justify-content: center;
+height: 100%;
 }
 
 
