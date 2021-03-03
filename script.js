@@ -1,23 +1,22 @@
 document.addEventListener("DOMContentLoaded", function (event) {
-    var fieldWidth = 600;
-    var fieldHeight = 600;
+    var fieldWidth = 500;
+    var fieldHeight = 500;
     var fieldOne = 25;
     var score = 0;
     var count = 0;
-setInterval(function(){
-    var screenWidth=window.screen.availWidth;
-    var screenHeight=window.screen.availHeight;
-    var boxContent=document.getElementById('box-content');
-    if(screenWidth>screenHeight){
-        boxContent.style.width=screenHeight-50+'px';
-        boxContent.style.height=screenHeight-50+'px';
-    }else{
-        screenHeight=window.screen.availHeight;
-        boxContent.style.width=screenHeight-50+'px';
-        boxContent.style.height=screenHeight-50+'px';
-    }
-},0);
     
+    window.addEventListener('resize',orientFun,false);
+    function orientFun(EO){
+        EO=EO||window.event;
+        EO.preventDefault();
+        var boxContent=document.getElementById('box-content');
+        var screenHeight=window.screen.availHeight;
+        boxContent.style.width=screenHeight-20+'px';
+        boxContent.style.height=screenHeight-20+'px';
+        boxContent.style.marginBottom=10+'px';
+        console.log('afsa');
+    }
+
 
     var canvas = document.getElementById('canvas1');
     canvas.setAttribute('width', fieldWidth);
@@ -65,7 +64,7 @@ setInterval(function(){
     eatTailAudio.src = "eatTailAudio.mp3";
 
     var slowHeart = new Audio();
-    slowHeart.src = 'slowheart.WAV';
+    slowHeart.src = 'slowheart.wav';
 
     function foodSrc() {
         var links = ['', 'pizza.png', 'burger.png', 'hot-dog.png', 'frees.png', 'bigPizza.png'];
@@ -247,7 +246,6 @@ setInterval(function(){
         context.textBaseline = 'middle';
 
         if (count == 3) {
-
             clearInterval(stopGame);
         }
 
@@ -364,6 +362,10 @@ setInterval(function(){
             context.lineWidth = 2;
             context.stroke();
         } else if (count == 3) {
+            context.drawImage(emptyheart, fieldWidth - fieldOne * 7, fieldOne);
+            context.drawImage(emptyheart, fieldWidth - fieldOne * 5, fieldOne);
+            context.drawImage(emptyheart, fieldWidth - fieldOne * 3, fieldOne);
+        }else if(count>3){
             context.drawImage(emptyheart, fieldWidth - fieldOne * 7, fieldOne);
             context.drawImage(emptyheart, fieldWidth - fieldOne * 5, fieldOne);
             context.drawImage(emptyheart, fieldWidth - fieldOne * 3, fieldOne);
