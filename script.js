@@ -180,7 +180,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-    var stopGame = setInterval(draw, 100);
+    var stopGame = setInterval(draw, 150);
 
     var milsec = 50;
     locCount = 0;
