@@ -138,7 +138,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
                var touchXm=touchX1;
                var touchYm=touchY1;
 
-                var minSwipe=50;
+                var minSwipe=20;
 
                 if (touchXs > touchXm && touchXs-touchXm>=minSwipe) {
                     if(Math.abs(touchXs-touchXm) > Math.abs(touchYs-touchYm)  && 
